@@ -1,0 +1,18 @@
+<!--
+vim:ft=htmldjango
+-->
+
+{% extends "base.html" %}
+
+{% block content %}
+{%load static %}
+<link rel="stylesheet" href="{% static 'announcements/style.css' %}" />
+
+<div class="announcement-bar">
+    <h1> {{announcement.title | title}} </h1>
+    <p> Created At: {{announcement.timestamp | date:"SHORT_DATE_FORMAT"}} </p>
+    <hr>
+    <div>{{text}}</div>
+</div>
+
+{% endblock %}

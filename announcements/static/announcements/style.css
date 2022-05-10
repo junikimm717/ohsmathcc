@@ -1,0 +1,36 @@
+:root {
+  --gray: #e5e5e5;
+  --white: #ffffff;
+  --darkgray: #525252;
+  --buttonbg: #0ea5e9;
+  --buttonbg: #2563eb;
+  --blue: #2563eb;
+}
+
+.pagination-links {
+  background-color: var(--blue);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+a.pagination-a {
+  text-decoration: none;
+  color: white;
+}
+
+.announcement-bar {
+  background-color: var(--gray);
+  margin: 0.5rem;
+  padding: 1rem;
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+.announcement-list {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: block;
+}

@@ -1,0 +1,43 @@
+<!--
+vim:ft=htmldjango
+-->
+
+{% extends "base.html" %}
+
+{% block content %}
+{%load static %}
+<h1> Announcements </h1>
+<link rel="stylesheet" href="{% static 'announcements/style.css' %}" />
+
+<div class="announcement-list">
+{%for announcement in page_obj%}
+<div class="announcement-bar" >
+    <h1> 
+    <a href="{%url 'announcements.show' announcement.id %}">
+    {{announcement.title | title}} </a>
+    </h1>
+    <p> Created At: {{announcement.timestamp | date:"SHORT_DATE_FORMAT"}} </p>
+    <p>{{announcement.text | truncatechars:60}}</p>
+</div>
+{%endfor%}
+</div>
+
+<div class="pagination">
+    <span class="pagination-links">
+        {% if page_obj.has_previous %}
+            <a class="pagination-a" href="?page=1">&laquo; first</a>
+            <a class="pagination-a" href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a class="pagination-a" href="?page={{ page_obj.next_page_number }}">next</a>
+            <a class="pagination-a" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}
