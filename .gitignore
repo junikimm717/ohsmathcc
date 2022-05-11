@@ -4,3 +4,4 @@ __pycache__
 /.postgres
 .vscode
 /staticfiles
+/docker-compose.yml

@@ -36,7 +36,7 @@ SECRET_KEY = env('SECRET_KEY')
 ALLOWED_HOSTS = [
   'localhost',
   '127.0.0.1',
-  'ohsmathcc.net'
+  'ohsmathc.club'
 ]
 
 
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'django.contrib.sites',
 ]
 
 MIDDLEWARE = [

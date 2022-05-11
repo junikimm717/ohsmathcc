@@ -5,7 +5,7 @@ in the OHS Math Competition Homeroom.
 
 ## Starting up the Development Environment
 
-### Installation (Simpler with Nix)
+### with NixOS
 
 - You should have `virtualisation.docker.enable = true;` in your configuration
   file (probably `/etc/nixos/configuration.nix`).
@@ -19,12 +19,19 @@ in the OHS Math Competition Homeroom.
 ### In other environments
 
 - Have Docker, Python, and Poetry installed on your system.
+- Install all of the python dependencies with `poetry install`
 - Run `source ./dev` (Done automatically in shell.nix), this sets the
   appropriate environmental variables and starts up the postgres develompent
   container.
-- Install all of the python dependencies with `poetry install`
 - Copy over the sample environmental variables in `./clubapp/.env.example` to
   `clubapp/.env`
+
+## Deploying a Production Server (in a VPS)
+
+- Install Docker and Git on the system.
+- Git clone this repository (and `cd` into it)
+- Run `./prod.sh --deploy` to begin running the containers, or `./prod.sh` if
+  you just want to get the resulting `docker-compose.yml` file.
 
 ## All Environmental Variables
 
