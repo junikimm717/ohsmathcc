@@ -11,14 +11,20 @@ in the OHS Math Competition Homeroom.
   file (probably `/etc/nixos/configuration.nix`).
 - All other necessary packages are provided in the shell.nix.
 - Run `nix-shell` with your working directory being in the root of this
-  repository.
+  repository (starts up the database and activates the poetry shell).
 - Install all of the python dependencies with `poetry install`
+- Copy over the sample environmental variables in `./clubapp/.env.example` to
+  `clubapp/.env`
+
+### In other environments
+
+- Have Docker, Python, and Poetry installed on your system.
 - Run `source ./dev` (Done automatically in shell.nix), this sets the
   appropriate environmental variables and starts up the postgres develompent
   container.
+- Install all of the python dependencies with `poetry install`
 - Copy over the sample environmental variables in `./clubapp/.env.example` to
   `clubapp/.env`
-- Get developing!
 
 ## All Environmental Variables
 
