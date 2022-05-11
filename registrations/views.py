@@ -1,16 +1,19 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 from registrations.models import Registration, Contest
 
 from django.utils.safestring import mark_safe
 import markdown
+import datetime
 
-# TODO: implement contests.html, registrations.html, and showcontest.html.
+from .forms import RegisterForm
+
 # TODO: implement GET vs POST request here (for when people actually sign up).
 def contests(request):
     # TODO: change this query so that the deadline did not happen. 
-    contests = Contest.objects.all()
+    contests = Contest.objects.filter(deadline__gte=datetime.date.today())
     paginator = Paginator(contests, 10)
     page_number = request.GET.get('page')
     if page_number is None:
@@ -18,16 +21,43 @@ def contests(request):
     page_obj = paginator.get_page(page_number)
     return render(request, "registrations/contests.html", {'page_obj': page_obj})
 
-# show the details about a specific contest..
 def show_contest(request, uuid):
     contest = get_object_or_404(Contest, id=uuid)
-    text = mark_safe(markdown.markdown(announcement.text))
-    return render(request, "registrations/showcontest.html", 
-                {'contest': announcement, 'text': text})
+    text = mark_safe(markdown.markdown(contest.description))
+    if not request.user.is_authenticated:
+        return render(request, "registrations/showcontest.html", 
+                    {'contest': contest, 'text': text})
+    else:
+        registration = None
+        invalid = False
+        if request.method == "POST":
+            form = RegisterForm(request.POST)
+            if form.is_valid() and form.cleaned_data['username'] == request.user.username:
+                if form.cleaned_data['registered'] == "Y":
+                    registration = True
+                    Registration.objects.get_or_create(user=request.user, contest=contest)
+                else:
+                    registration = False
+                    Registration.objects.filter(user=request.user, contest=contest).delete()
+            else:
+                invalid = True
+        try:
+            if registration is None:
+                registration = Registration.objects.get(user=request.user, contest=contest)
+        except Registration.DoesNotExist:
+            pass
+        form = RegisterForm(initial={"registered": "Y" if registration else "N"})
+        print("hello")
+        return render(request, "registrations/showcontest.html", 
+                    {'contest': contest, 'text': text, 'form': form, 'invalid': invalid, 'registered': registration})
 
-# TODO: user only decorator needed
+@login_required
 def registrations(request):
-    registrations = Registrations.objects.get(user=request.user)
+    registrations = []
+    try:
+        registrations = Registration.objects.get(user=request.user)
+    except Registration.DoesNotExist:
+        pass
     paginator = Paginator(registrations, 10)
     page_number = request.GET.get('page')
     if page_number is None:

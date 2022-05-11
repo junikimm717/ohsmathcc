@@ -1,0 +1,28 @@
+<!--
+vim:ft=htmldjango
+-->
+
+{% extends "base.html" %} {% block content %} {%load static %}
+<link rel="stylesheet" href="{% static 'registrations/style.css' %}" />
+
+<div class="registration-bar">
+  <h1>{{contest.title | title}}</h1>
+  <p>Deadline: {{contest.deadline | date:"SHORT_DATE_FORMAT"}}</p>
+  <hr />
+  <div>{{text}}</div>
+  {% if form %}
+  <hr />
+  <h1>The Dead-Simple Form</h1>
+  {%if invalid %}
+  <p><b>Invalid Form. Please try again.</b></p>
+  {%endif%} {%if registered %}
+  <p><strong class="green-text">You are registered!</strong></p>
+  {%endif%}
+  <form action="{% url 'registrations.show' contest.id %}" method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" value="Submit" />
+  </form>
+  {%endif%}
+</div>
+
+{% endblock %}

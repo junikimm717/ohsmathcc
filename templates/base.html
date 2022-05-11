@@ -1,39 +1,69 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<!--
+  <!--
 vim:ft=htmldjango
 -->
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OHS Math Homeroom</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="{% static 'style.css' %}" />
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar">
-        <div>
-            <a class="navbutton" href="{% url 'index' %}" alt="Home"> <i class="fa-solid fa-house"></i> </a>
-            <a class="navbutton" href="{% url 'announcements.index' %}" alt="Announcements"> <i class="fa-solid fa-bullhorn"></i> </a>
+      <div>
+        <a class="navbutton" href="{% url 'index' %}" alt="Home">
+          <i class="fa-solid fa-house"></i>
+        </a>
+        <a
+          class="navbutton"
+          href="{% url 'announcements.index' %}"
+          alt="Announcements"
+        >
+          <i class="fa-solid fa-bullhorn"></i>
+        </a>
+      </div>
+      <div>
+        {%if user.is_authenticated%}
+        <span class="navuser">
+          {{user.username}} <i class="fa-solid fa-caret-down"></i
+        ></span>
+        <div class="navuser-dropdown">
+          <a
+            href="{% url 'registrations.index' %}"
+            alt="Register"
+            class="dropdown-link"
+          >
+            Contests
+          </a>
+          <a
+            href="{% url 'password_change' %}"
+            alt="Register"
+            class="dropdown-link"
+          >
+            Password Change
+          </a>
+          <a href="{% url 'logout' %}" class="dropdown-link" alt="Log Out">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </a>
         </div>
-        <div>
-            {%if user.is_authenticated%}
-                <span class="navuser"> {{user.username}} <i class="fa-solid fa-caret-down"></i></span>
-                <div class="navuser-dropdown">
-                    <a href="{% url 'registrations.index' %}" alt="Register" class="dropdown-link"> Contests </a>
-                    <a href="{% url 'password_change' %}" alt="Register" class="dropdown-link"> Password Change </a>
-                    <a href="{% url 'logout' %}" class="dropdown-link" alt="Log Out"> <i class="fa-solid fa-arrow-right-from-bracket"></i> </a>
-                </div>
-            {%else%}
-                <a class="navbutton" href="{% url 'login' %}"> <i class="fa-solid fa-arrow-right-to-bracket"></i> </a>
-            {%endif%}
-        </div>
+        {%else%}
+        <a class="navbutton" href="{% url 'login' %}">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        </a>
+        {%endif%}
+      </div>
     </nav>
-    <main>
-        {% block content    %}
-        {% endblock         %}
-    </main>
-</body>
+    <main>{% block content %} {% endblock %}</main>
+    <footer>&copy; 2022-{% now "Y" %} Juni Kim</footer>
+  </body>
 </html>

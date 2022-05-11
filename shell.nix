@@ -10,5 +10,6 @@ pkgs.mkShell {
   MATHCC_DEV="true";
   shellHook = ''
 source `poetry env info --path`/bin/activate
+source ./dev
   '';
 }

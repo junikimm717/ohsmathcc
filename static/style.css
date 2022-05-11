@@ -83,3 +83,11 @@ nav {
 .navuser-dropdown:hover {
   display: block;
 }
+
+footer {
+  margin: 1rem;
+  display: block;
+  color: gray;
+  font-size: 15px;
+  text-align: center;
+}

@@ -91,7 +91,7 @@ DATABASES = {
         'NAME': env('POSTGRES_DB'),
         'USER': env('POSTGRES_USER'),
         'PASSWORD': env('POSTGRES_PASSWORD'),
-        'HOST': '127.0.0.1',
+        'HOST': os.environ.get("POSTGRES_HOST") or '127.0.0.1',
         'PORT': '5432',
     }
 }
@@ -121,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Los_Angeles'
 
 USE_I18N = True
 
@@ -138,3 +138,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+LOGIN_URL = "/accounts/login/"
