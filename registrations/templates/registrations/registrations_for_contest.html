@@ -3,7 +3,7 @@ vim:ft=htmldjango
 -->
 
 {% extends "base.html" %} {% block content %} {%load static %}
-<h1>My Registrations</h1>
+<h1>Registrations for {{contest.title}}</h1>
 <link
   rel="stylesheet"
   type="text/css"
@@ -13,11 +13,14 @@ vim:ft=htmldjango
 <div class="registration-list">
   {%for registration in page_obj%}
   <div class="registration-bar">
-    <h1>{{registration.contest.title | title}}</h1>
+    <h2>
+      {{registration.user.username}} (Name: {{registration.user.first_name}}
+      {{registration.user.last_name}}) (Email: {{registration.user.email}})
+    </h2>
     <p>
-      <strong>Deadline: </strong>
-      {{registration.contest.deadline | date:"SHORT_DATE_FORMAT"}}
+      <strong>Deadline: </strong>{{contest.deadline | date:"SHORT_DATE_FORMAT"}}
     </p>
+    <p>Signed up on {{registration.timestamp}}</p>
   </div>
   {%endfor%}
 </div>

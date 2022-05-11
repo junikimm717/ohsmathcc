@@ -16,4 +16,4 @@ class Registration(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     contest = models.ForeignKey(Contest, on_delete=models.CASCADE)
     class Meta:
-        ordering = ['-timestamp']
+        ordering = ['timestamp']

@@ -2,21 +2,46 @@
 vim:ft=htmldjango
 -->
 
-{% extends "base.html" %}
-
-{% block content %}
-{% load static %}
-<h1> OHS Math Competition Homeroom Page </h1>
-<img src="{% static 'home/ohs.png' %}" alt = "pixel logo"/>
+{% extends "base.html" %} {% block content %} {% load static %}
+<h1>
+  OHS Math Competition Homeroom
+  <img src="{% static 'home/ohs.png' %}" alt="pixel logo" style="width: 3rem" />
+</h1>
 <p>
-    This is a website made by Juni Kim in order to combat some of the primary
-    problems that plague the management of an online math competition club. It aims
-    to resolve the following tasks:
-    <ol>
-        <li>
-            Automatically keep track of registration deadlines/collecting sign-ups 
-        </li>
-        <li> Make various critical announcements/agendas highly accessible </li>
-    </ol>
+  Welcome to the main site of the Stanford OHS Math Competition Homeroom/Club!
+  We meet on a weekly basis every Friday, participating in math contests and
+  going over contest-related topics.
 </p>
-{% endblock      %}
+<h2>Important Links</h2>
+<ul>
+  <li>
+    <a
+      href="https://pcadobeconnect.stanford.edu/mathcompetitionsclub"
+      target="_blank"
+    >
+      Adobe Connect Meetings
+    </a>
+  </li>
+  <li>
+    <a
+      href="https://docs.google.com/document/d/1BN5sS6dh8LWYCkbyUiOdqHhSPIBKfCvXG7BrCShrc1o/view"
+    >
+      Contest List
+    </a>
+  </li>
+  <li>
+    <a
+      href="https://docs.google.com/document/d/1Zq8ZRdppxhSclObiB3cDCYlll2bRA1CJG0VrG6Ciz4E/view"
+    >
+      Resources
+    </a>
+  </li>
+  <li>
+    <a
+      href="https://docs.google.com/document/d/1XSRLJyGIKKXJbQrwuf93QwU6JyLSaU5vIC1gHG8XgqI/view"
+    >
+      Math Programs
+    </a>
+  </li>
+</ul>
+{% endblock %}

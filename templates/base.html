@@ -18,6 +18,18 @@ vim:ft=htmldjango
     />
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
   </head>
+  <script>
+    let menu_open = false;
+    function togglemenu() {
+      if (menu_open) {
+        // close it
+        document.getElementById("navuser-dropdown").style.display = "none";
+      } else {
+        document.getElementById("navuser-dropdown").style.display = "block";
+      }
+      menu_open = !menu_open;
+    }
+  </script>
   <body>
     <nav class="navbar">
       <div>
@@ -31,19 +43,27 @@ vim:ft=htmldjango
         >
           <i class="fa-solid fa-bullhorn"></i>
         </a>
+        <a
+          class="navbutton"
+          href="{% url 'registrations.index' %}"
+          alt="Contests"
+        >
+          <i class="fa-solid fa-trophy"></i>
+        </a>
       </div>
       <div>
         {%if user.is_authenticated%}
-        <span class="navuser">
-          {{user.username}} <i class="fa-solid fa-caret-down"></i
-        ></span>
-        <div class="navuser-dropdown">
+        <span class="navuser" onclick="togglemenu()">
+          {{user.username}}
+          <i class="fa-solid fa-caret-down"></i>
+        </span>
+        <div class="navuser-dropdown" id="navuser-dropdown">
           <a
-            href="{% url 'registrations.index' %}"
+            href="{% url 'registrations.mine' %}"
             alt="Register"
             class="dropdown-link"
           >
-            Contests
+            Registrations
           </a>
           <a
             href="{% url 'password_change' %}"
@@ -64,6 +84,9 @@ vim:ft=htmldjango
       </div>
     </nav>
     <main>{% block content %} {% endblock %}</main>
-    <footer>&copy; 2022-{% now "Y" %} Juni Kim</footer>
+    <footer>
+      &copy; 2022-{% now "Y" %} Juni Kim
+      <a href="https://github.com/junikimm717/ohsmathcc"> Source Code </a>
+    </footer>
   </body>
 </html>

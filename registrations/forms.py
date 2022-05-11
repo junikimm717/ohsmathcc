@@ -1,10 +1,14 @@
 from django import forms
 
-CHOICES = [
-  ('N', "NO; I have not taken all of the above steps/would not like to participate."),
-  ('Y', "YES; I have taken all of the above steps and would like to participate."),
-]
-
 class RegisterForm(forms.Form):
-    registered = forms.ChoiceField(label="Would you like to register?", choices=CHOICES, required=True)
+    CHOICES = [
+      ('N', "NO; Incomplete/Unavailable (default)"),
+      ('Y', "YES; I did as above"),
+    ]
+    QUESTION = """
+Are you sure you want to register? By selecting \"YES,\", you confirm that you
+have followed all of the above instructions and are available for contest
+participation.
+    """
+    registered = forms.ChoiceField(label=QUESTION, choices=CHOICES, required=True)
     username = forms.CharField(max_length=255, label="Please enter your username to confirm.", required=True)

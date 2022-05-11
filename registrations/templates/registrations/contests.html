@@ -18,6 +18,13 @@ vim:ft=htmldjango
         {{contest.title | title}}
       </a>
     </h1>
+    {%if user.is_staff %}
+    <span>
+      <a href="{%url 'registrations.signedup' contest.id %}">
+        People who signed up
+      </a>
+    </span>
+    {%endif%}
     <p>
       <strong>Deadline: </strong>{{contest.deadline | date:"SHORT_DATE_FORMAT"}}
     </p>
