@@ -53,7 +53,7 @@ def show_contest(request, uuid):
                     {'contest': contest, 'text': text, 'form': form, 'invalid': invalid, 'registered': registration})
 
 @login_required
-def registrations(request):
+def myregistrations(request):
     registrations = []
     try:
         registrations = Registration.objects.filter(user=request.user).all()
@@ -64,7 +64,7 @@ def registrations(request):
     if page_number is None:
         page_number = 1
     page_obj = paginator.get_page(page_number)
-    return render(request, "registrations/registrations.html", {'page_obj': page_obj})
+    return render(request, "registrations/myregistrations.html", {'page_obj': page_obj})
 
 # hardcoded URL (is an anti-pattern and needs to be fixed, corresponds to the 'login' view)
 @staff_member_required(login_url="/accounts/login")

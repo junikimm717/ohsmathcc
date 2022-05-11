@@ -9,6 +9,8 @@ class Contest(models.Model):
     title = models.CharField(max_length=255)
     deadline = models.DateField()
     description = models.TextField()
+    class Meta:
+        ordering = ['deadline']
 
 class Registration(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

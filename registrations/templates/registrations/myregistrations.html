@@ -13,7 +13,9 @@ vim:ft=htmldjango
 <div class="registration-list">
   {%for registration in page_obj%}
   <div class="registration-bar">
-    <h1>{{registration.contest.title | title}}</h1>
+    <a href="{%url 'registrations.show' registration.contest.id %}">
+      <h1>{{registration.contest.title | title}}</h1>
+    </a>
     <p>
       <strong>Deadline: </strong>
       {{registration.contest.deadline | date:"SHORT_DATE_FORMAT"}}

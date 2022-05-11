@@ -6,7 +6,7 @@ class RegisterForm(forms.Form):
       ('Y', "YES; I did as above"),
     ]
     QUESTION = """
-Are you sure you want to register? By selecting \"YES,\", you confirm that you
+Are you sure you want to register? By selecting \"YES,\" you confirm that you
 have followed all of the above instructions and are available for contest
 participation.
     """
