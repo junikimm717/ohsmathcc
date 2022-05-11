@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import environ
+import logging
 
 DEBUG = False
 
@@ -91,6 +92,7 @@ WSGI_APPLICATION = 'clubapp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+
 
 DATABASES = {
     'default': {

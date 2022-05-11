@@ -3,4 +3,6 @@ __pycache__
 *.sqlite3
 .postgres
 .vscode
+.env
 staticfiles
+docker-compose.yml
