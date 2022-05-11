@@ -4,7 +4,11 @@ vim:ft=htmldjango
 
 {% extends "base.html" %} {% block content %} {%load static %}
 <h1>Contests</h1>
-<link rel="stylesheet" href="{% static 'registrations/style.css' %}" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'registrations/style.css' %}"
+/>
 
 <div class="registration-list">
   {%for contest in page_obj%}

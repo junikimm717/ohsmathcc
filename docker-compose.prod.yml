@@ -12,12 +12,23 @@ services:
       - POSTGRES_DB=ohsmathcc
       - POSTGRES_USER=username
       - POSTGRES_PASSWORD=password
+    healthcheck:
+      # you need to change the variables here too.
+      test: ["CMD-SHELL", "pg_isready -d ohsmathcc -U username"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
   web:
+    build: .
+    command: sh /app/entrypoint.sh
     depends_on:
-      - db
-    image: fnndsc/python-poetry
+      db:
+        condition: service_healthy
     environment:
+      - SECRET_KEY=somesecretkeythatsomething
       - POSTGRES_DB=ohsmathcc
       - POSTGRES_USER=username
       - POSTGRES_PASSWORD=password
       - POSTGRES_HOST=db
+    ports:
+      - "8000:8000"
