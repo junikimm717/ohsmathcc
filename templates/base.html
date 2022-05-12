@@ -52,13 +52,22 @@ vim:ft=htmldjango
           <i class="fa-solid fa-trophy"></i>
         </a>
       </div>
-      <div>
+      <div class="navbar-right">
         {%if user.is_authenticated%}
         <span class="navuser" onclick="togglemenu()">
           {{user.username}}
           <i class="fa-solid fa-caret-down"></i>
         </span>
         <div class="navuser-dropdown" id="navuser-dropdown">
+          {%if user.is_staff%}
+          <a
+            href="{% url 'admin:index' %}"
+            alt="Register"
+            class="dropdown-link"
+          >
+            Admin
+          </a>
+          {%endif%}
           <a
             href="{% url 'registrations.mine' %}"
             alt="Register"

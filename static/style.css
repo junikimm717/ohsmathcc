@@ -64,6 +64,10 @@ nav {
   background-color: var(--gray);
 }
 
+.navbar-right {
+  margin-right: 2rem;
+}
+
 .dropdown-link {
   margin: 0.25rem;
   margin-top: 0.5rem;

@@ -3,6 +3,8 @@
 A Django-based site (infused with nix and docker) for keeping things organized
 in the OHS Math Competition Homeroom.
 
+It should be deployed [here](https://ohsmathc.club).
+
 ## Starting up the Development Environment
 
 ### with NixOS
