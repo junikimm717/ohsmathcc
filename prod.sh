@@ -2,9 +2,6 @@
 
 DIR="$(dirname "$(realpath "$0")")"
 create_docker_compose() {
-  if test -d "$DIR/.postgres/postgres-data-prod"; then
-    sudo rm -rf "$DIR/.postgres/postgres-data-prod"
-  fi
   SECRET_KEY="$(LC_CTYPE=C tr -dc '[:alpha:]' < /dev/random | fold -w 40 | head -n 1)"
   read -rp "Postgres User: " POSTGRES_USER
   read -rp "Postgres Password: " POSTGRES_PASSWORD
@@ -20,7 +17,6 @@ fi
 
 case "$1" in
   --deploy|-d)
-
     docker-compose up -d --build
     docker-compose exec web python manage.py createsuperuser
   ;;
