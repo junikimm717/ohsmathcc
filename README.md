@@ -29,8 +29,10 @@ It should be deployed [here](https://ohsmathc.club).
 
 ### Setting up the database (Both Types)
 
-- Run `./dev-db.sh`. This starts up a postgres docker container with all data
+- Run `./dev-db.sh up`. This starts up a postgres docker container with all data
   being stored at `.postgres/postgres-data`.
+- In order to stop the database, run `./dev-db.sh down`. All data will still be
+  saved.
 
 ## Deploying a Production Server (in a VPS)
 
@@ -39,7 +41,8 @@ It should be deployed [here](https://ohsmathc.club).
 - Run `./prod.sh --deploy` to begin running the containers, or `./prod.sh` if
   you just want to get the resulting `docker-compose.yml` file.
 - In either case, if the `docker-compose.yml` file is not present, the script
-  will prompt for a username and password for your database. **Be very careful about this if you already have a container db running with critical data**.
+  will prompt for a username and password for your database. **Be very careful
+  about this if you already have a container db running with critical data**.
 
 ## All Environmental Variables
 
