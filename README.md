@@ -7,13 +7,13 @@ It should be deployed [here](https://ohsmathc.club).
 
 ## Starting up the Development Environment
 
-### with NixOS
+### With NixOS
 
 - You should have `virtualisation.docker.enable = true;` in your configuration
   file (probably `/etc/nixos/configuration.nix`).
 - All other necessary packages are provided in the shell.nix.
 - Run `nix-shell` with your working directory being in the root of this
-  repository (starts up the database and activates the poetry shell).
+  repository (sets up environmental variables and activates the poetry shell).
 - Install all of the python dependencies with `poetry install`
 - Copy over the sample environmental variables in `./clubapp/.env.example` to
   `clubapp/.env`
@@ -23,10 +23,14 @@ It should be deployed [here](https://ohsmathc.club).
 - Have Docker, Python, and Poetry installed on your system.
 - Install all of the python dependencies with `poetry install`
 - Run `source ./dev` (Done automatically in shell.nix), this sets the
-  appropriate environmental variables and starts up the postgres develompent
-  container.
+  appropriate environmental variables.
 - Copy over the sample environmental variables in `./clubapp/.env.example` to
   `clubapp/.env`
+
+### Setting up the database (Both Types)
+
+- Run `./dev-db.sh`. This starts up a postgres docker container with all data
+  being stored at `.postgres/postgres-data`.
 
 ## Deploying a Production Server (in a VPS)
 
@@ -34,6 +38,8 @@ It should be deployed [here](https://ohsmathc.club).
 - Git clone this repository (and `cd` into it)
 - Run `./prod.sh --deploy` to begin running the containers, or `./prod.sh` if
   you just want to get the resulting `docker-compose.yml` file.
+- In either case, if the `docker-compose.yml` file is not present, the script
+  will prompt for a username and password for your database. **Be very careful about this if you already have a container db running with critical data**.
 
 ## All Environmental Variables
 
