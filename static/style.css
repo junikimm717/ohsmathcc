@@ -1,5 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:400,500,600,700,800,900&display=swap);
+
 html {
-	font-family: sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 /* This contains the colorscheme for the entire website.*/
@@ -14,80 +16,87 @@ html {
 }
 */
 :root {
-	--bg-color: #e5e5e5;
-	--light-text: #ffffff;
-	--dark-text: #000000;
-	--dropdown-button: #525252;
-	--buttonbg: #2563eb;
-	--pagination-color: #2563eb;
+  --bg-color: #e5e5e5;
+  --light-text: #ffffff;
+  --dark-text: #000000;
+  --dropdown-button: #525252;
+  --buttonbg: #2563eb;
+  --pagination-color: #2563eb;
+}
+
+body {
+  margin: 0;
 }
 
 main {
-	padding-right: 15px;
-	padding-left: 15px;
-	margin-right: auto;
-	margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 700px;
 }
 
 nav {
-	margin-bottom: 0.5rem;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-	background-color: var(--bg-color);
-	display: flex;
-	flex-wrap: nowrap;
-	justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .navbutton {
-	background-color: var(--buttonbg);
-	padding: 0.5rem;
-	margin: 0.5rem;
-	color: var(--light-text);
-	border-radius: 10px;
-	font-size: 20px;
-	text-decoration: none;
-	text-align: center;
+  background-color: var(--buttonbg);
+  padding: 0.5rem;
+  margin: 0.5rem;
+  color: var(--light-text);
+  border-radius: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
 }
 
 .navuser {
-	padding: 0.5rem;
-	margin-left: 0.5rem;
-	margin-right: 0.5rem;
-	border-radius: 10px;
-	font-size: 20px;
-	text-decoration: none;
-	text-align: center;
-	position: relative;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+  position: relative;
 }
 
 .navuser-dropdown {
-	display: none;
-	padding: 0.5rem;
-	margin-left: 0.5rem;
-	margin-right: 0.5rem;
-	border-radius: 5px;
-	font-size: 20px;
-	text-decoration: none;
-	text-align: center;
-	position: absolute;
-	right: 0;
-	z-index: 10;
-	background-color: var(--bg-color);
+  display: none;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 5px;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  background-color: var(--bg-color);
 }
 
 .dropdown-link {
-	margin: 0.25rem;
-	margin-top: 0.2rem;
-	margin-bottom: 0.2rem;
-	display: block;
-	text-decoration: none;
-	color: var(--dark-text);
-	font-size: 15px;
-	background-color: var(--dropdown-button);
-	border-radius: 3px;
-	color: var(--light-text);
-	padding: 5px;
+  margin: 0.25rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  display: block;
+  text-decoration: none;
+  color: var(--dark-text);
+  font-size: 15px;
+  background-color: var(--dropdown-button);
+  border-radius: 3px;
+  color: var(--light-text);
+  padding: 5px;
 }
 /*
 .navuser:hover ~ .navuser-dropdown,
@@ -97,17 +106,17 @@ nav {
 */
 
 footer {
-	margin: 1rem;
-	display: block;
-	color: #525252;
-	font-size: 15px;
-	text-align: center;
+  margin: 1rem;
+  display: block;
+  color: #525252;
+  font-size: 15px;
+  text-align: center;
 }
 
 .text-success {
-	color: green;
+  color: green;
 }
 
 .text-fail {
-	color: red;
+  color: red;
 }

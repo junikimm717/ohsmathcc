@@ -1,106 +1,106 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-	<!--
+  <!--
 vim:ft=htmldjango
 -->
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta
-			name="description"
-			content="The Stanford OHS Math Team Management Website: Keeps track of registrations and club-wide announcements."
-		/>
-		<title>OHS Math Homeroom</title>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-			integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer"
-		/>
-		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
-		<link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
-	</head>
-	<script>
-		let menu_open = false;
-		function togglemenu() {
-			if (menu_open) {
-				// close it
-				document.getElementById('navuser-dropdown').style.display = 'none';
-			} else {
-				document.getElementById('navuser-dropdown').style.display = 'block';
-			}
-			menu_open = !menu_open;
-		}
-	</script>
-	<body>
-		<nav class="navbar">
-			<div>
-				<a class="navbutton" href="{% url 'index' %}" alt="Home">
-					<i class="fa-solid fa-house"></i>
-				</a>
-				<a
-					class="navbutton"
-					href="{% url 'announcements.index' %}"
-					alt="Announcements"
-				>
-					<i class="fa-solid fa-bullhorn"></i>
-				</a>
-				<a
-					class="navbutton"
-					href="{% url 'registrations.index' %}"
-					alt="Contests"
-				>
-					<i class="fa-solid fa-trophy"></i>
-				</a>
-			</div>
-			<div class="navbar-right">
-				{%if user.is_authenticated%}
-				<span class="navuser" onclick="togglemenu()">
-					{{user.username}}
-					<i class="fa-solid fa-caret-down"></i>
-				</span>
-				<div class="navuser-dropdown" id="navuser-dropdown">
-					{%if user.is_staff%}
-					<a
-						href="{% url 'admin:index' %}"
-						alt="Register"
-						class="dropdown-link"
-					>
-						Admin
-					</a>
-					{%endif%}
-					<a
-						href="{% url 'registrations.mine' %}"
-						alt="Register"
-						class="dropdown-link"
-					>
-						Registrations
-					</a>
-					<a
-						href="{% url 'password_change' %}"
-						alt="Register"
-						class="dropdown-link"
-					>
-						Password Change
-					</a>
-					<a href="{% url 'logout' %}" class="dropdown-link" alt="Log Out">
-						<i class="fa-solid fa-arrow-right-from-bracket"></i>
-					</a>
-				</div>
-				{%else%}
-				<a class="navbutton" href="{% url 'login' %}">
-					<i class="fa-solid fa-arrow-right-to-bracket"></i>
-				</a>
-				{%endif%}
-			</div>
-		</nav>
-		<main>{% block content %} {% endblock %}</main>
-		<footer>
-			&copy; 2022-{% now "Y" %} Juni Kim
-			<a href="https://github.com/junikimm717/ohsmathcc"> Source Code </a>
-		</footer>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The Stanford OHS Math Team Management Website: Keeps track of registrations and club-wide announcements."
+    />
+    <title>OHS Math Homeroom</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
+  </head>
+  <script>
+    let menu_open = false;
+    function togglemenu() {
+      if (menu_open) {
+        // close it
+        document.getElementById("navuser-dropdown").style.display = "none";
+      } else {
+        document.getElementById("navuser-dropdown").style.display = "block";
+      }
+      menu_open = !menu_open;
+    }
+  </script>
+  <body>
+    <nav class="navbar">
+      <div>
+        <a class="navbutton" href="{% url 'index' %}" alt="Home">
+          <i class="fa-solid fa-house"></i>
+        </a>
+        <a
+          class="navbutton"
+          href="{% url 'announcements.index' %}"
+          alt="Announcements"
+        >
+          <i class="fa-solid fa-bullhorn"></i>
+        </a>
+        <a
+          class="navbutton"
+          href="{% url 'registrations.index' %}"
+          alt="Contests"
+        >
+          <i class="fa-solid fa-trophy"></i>
+        </a>
+      </div>
+      <div class="navbar-right">
+        {%if user.is_authenticated%}
+        <span class="navuser" onclick="togglemenu()">
+          {{user.username}}
+          <i class="fa-solid fa-angle-down"></i>
+        </span>
+        <div class="navuser-dropdown" id="navuser-dropdown">
+          {%if user.is_staff%}
+          <a
+            href="{% url 'admin:index' %}"
+            alt="Register"
+            class="dropdown-link"
+          >
+            Admin
+          </a>
+          {%endif%}
+          <a
+            href="{% url 'registrations.mine' %}"
+            alt="Register"
+            class="dropdown-link"
+          >
+            Registrations
+          </a>
+          <a
+            href="{% url 'password_change' %}"
+            alt="Register"
+            class="dropdown-link"
+          >
+            Password Change
+          </a>
+          <a href="{% url 'logout' %}" class="dropdown-link" alt="Log Out">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </a>
+        </div>
+        {%else%}
+        <a class="navbutton" href="{% url 'login' %}">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        </a>
+        {%endif%}
+      </div>
+    </nav>
+    <main>{% block content %} {% endblock %}</main>
+    <footer>
+      &copy; 2022-{% now "Y" %} Juni Kim
+      <a href="https://github.com/junikimm717/ohsmathcc"> Source Code </a>
+    </footer>
+  </body>
 </html>
