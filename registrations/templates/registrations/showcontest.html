@@ -4,29 +4,29 @@ vim:ft=htmldjango
 
 {% extends "base.html" %} {% block content %} {%load static %}
 <link
-	rel="stylesheet"
-	type="text/css"
-	href="{% static 'registrations/style.css' %}"
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'registrations/style.css' %}"
 />
 
 <div class="registration-bar">
-	<h1>{{contest.title | title}}</h1>
-	<p>Deadline: {{contest.deadline | date:"SHORT_DATE_FORMAT"}}</p>
-	<hr />
-	<div>{{text}}</div>
-	{% if form %}
-	<hr />
-	<h1>The Dead-Simple Form</h1>
-	{%if invalid %}
-	<p><strong class="red-text">Invalid Form. Please try again.</strong></p>
-	{%endif%} {%if registered %}
-	<p><strong class="text-success">You are registered!</strong></p>
-	{%endif%}
-	<form action="{% url 'registrations.show' contest.id %}" method="post">
-		{% csrf_token %} {{ form.as_p }}
-		<input type="submit" value="Submit" />
-	</form>
-	{%endif%}
+  <h1>{{contest.title | title}}</h1>
+  <p>Deadline: {{contest.deadline | date:"SHORT_DATE_FORMAT"}}</p>
+  <hr />
+  <div>{{text}}</div>
+  {% if form %}
+  <hr />
+  <h1>The Dead-Simple Form</h1>
+  {%if invalid %}
+  <p><strong class="text-fail">Invalid Form. Please try again.</strong></p>
+  {%endif%} {%if registered %}
+  <p><strong class="text-success">You are registered!</strong></p>
+  {%endif%}
+  <form action="{% url 'registrations.show' contest.id %}" method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" value="Submit" />
+  </form>
+  {%endif%}
 </div>
 
 {% endblock %}

@@ -20,7 +20,8 @@ It should be deployed [here](https://ohsmathc.club).
 
 ### In other environments
 
-- Have Docker, Python, and Poetry installed on your system.
+- Have Docker, the latest possible version of docker-compose, Python, and Poetry
+  installed on your system.
 - Install all of the python dependencies with `poetry install`
 - Run `source ./dev` (Done automatically in shell.nix), this sets the
   appropriate environmental variables.
@@ -36,7 +37,7 @@ It should be deployed [here](https://ohsmathc.club).
 
 ## Deploying a Production Server (in a VPS)
 
-- Install Docker and Git on the system.
+- Install Docker, the latest version of docker-compose, and Git on the system.
 - Git clone this repository (and `cd` into it)
 - Run `./prod.sh --deploy` to begin running the containers, or `./prod.sh` if
   you just want to get the resulting `docker-compose.yml` file.
@@ -57,7 +58,7 @@ POSTGRES_USER=username
 POSTGRES_PASSWORD=password
 # this is not actually required in development (used in docker containers e.g.)
 POSTGRES_HOST=127.0.0.1
-# is this a development environment? (if this variable is unset, the environment
+# is this a development environment? (if this variable is not set, the environment
 # is treated as production)
 MATHCC_DEV='true'
 ```
