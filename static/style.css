@@ -7,6 +7,7 @@ html {
 /* This contains the colorscheme for the entire website.*/
 :root {
   --bg-color: #d4d4d8;
+  --light-bg: #eeeeee;
   --nav-bg: #d2c295;
   --light-text: #ffffff;
   --dark-text: #2e2d29;
@@ -28,7 +29,7 @@ main {
   margin-left: auto;
   max-width: 700px;
   color: var(--dark-text);
-  background-color: #eeeeee;
+  background-color: var(--light-bg);
 }
 
 @media (max-width: 760px) {
@@ -122,9 +123,13 @@ nav {
 }
 
 footer {
-  margin: 1rem;
+  margin: auto;
+  max-width: 300px;
+  padding: 0.2rem;
+  margin-top: 1rem;
   display: block;
   color: #525252;
+  background-color: var(--light-bg);
   font-size: 15px;
   text-align: center;
 }
