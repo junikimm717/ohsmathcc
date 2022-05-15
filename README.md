@@ -39,11 +39,20 @@ It should be deployed [here](https://ohsmathc.club).
 
 - Install Docker, the latest version of docker-compose, and Git on the system.
 - Git clone this repository (and `cd` into it)
-- Run `./prod.sh --deploy` to begin running the containers, or `./prod.sh` if
-  you just want to get the resulting `docker-compose.yml` file.
-- In either case, if the `docker-compose.yml` file is not present, the script
-  will prompt for a username and password for your database. **Be very careful
-  about this if you already have a container db running with critical data**.
+- Use the `prod.sh` script.
+
+## The prod.sh script
+
+NOTE: **Be very careful about not deleting your local `docker-compose.yml` file
+if the container database is already running with critical data**. You may be
+locked out if the database passwords don't match.
+
+- To learn more about this script, run `prod.sh -h`.
+- To just generate a ready `docker-compose.yml` file, run `./prod.sh`. The file
+  will not be overwritten if it exists.
+- To deploy the production containers, run `prod.sh -d`.
+- To deploy the production containers _and create a superuser while doing so_,
+  run `prod.sh -a -d`.
 
 ## All Environmental Variables
 
