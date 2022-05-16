@@ -58,9 +58,9 @@ vim:ft=htmldjango
       </div>
       <div class="navbar-right">
         {%if user.is_authenticated%}
-        <span class="navuser" onclick="togglemenu()">
+        <span class="navuser">
           {{user.username}}
-          <i class="fa-solid fa-angle-down"></i>
+          <i class="fa-solid fa-angle-down" onclick="togglemenu()"></i>
         </span>
         <div class="navuser-dropdown" id="navuser-dropdown">
           {%if user.is_staff%}
