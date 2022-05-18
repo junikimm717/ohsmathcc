@@ -4,15 +4,11 @@ vim:ft=htmldjango
 
 {% extends "base.html" %} {% block content %} {%load static %}
 <h1>Registrations for {{contest.title}}</h1>
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'registrations/style.css' %}"
-/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/listview.css' %}" />
 
-<div class="registration-list">
+<div class="listview-list">
   {%for registration in page_obj%}
-  <div class="registration-bar">
+  <div class="listview-bar">
     <h2>
       {{registration.user.username}} (Name: {{registration.user.first_name}}
       {{registration.user.last_name}}) (Email: {{registration.user.email}})
@@ -26,23 +22,30 @@ vim:ft=htmldjango
 </div>
 
 <div class="pagination">
-  <span class="pagination-links">
+  <span class="listview-pagination-links">
     {% if page_obj.has_previous %}
-    <a class="pagination-a" href="?page=1">&laquo; first</a>
-    <a class="pagination-a" href="?page={{ page_obj.previous_page_number }}"
-      >previous</a
+    <a class="listview-pagination-a" href="?page=1">&laquo; first</a>
+    <a
+      class="listview-pagination-a"
+      href="?page={{ page_obj.previous_page_number }}"
     >
+      previous
+    </a>
     {% endif %}
 
-    <span class="current">
+    <span>
       Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
     </span>
 
     {% if page_obj.has_next %}
-    <a class="pagination-a" href="?page={{ page_obj.next_page_number }}"
+    <a
+      class="listview-pagination-a"
+      href="?page={{ page_obj.next_page_number }}"
       >next</a
     >
-    <a class="pagination-a" href="?page={{ page_obj.paginator.num_pages }}"
+    <a
+      class="listview-pagination-a"
+      href="?page={{ page_obj.paginator.num_pages }}"
       >last &raquo;</a
     >
     {% endif %}

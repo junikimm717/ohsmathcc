@@ -1,4 +1,4 @@
-.pagination-links {
+.listview-pagination-links {
   background-color: var(--pagination-color);
   color: var(--light-text);
   padding: 0.5rem;
@@ -6,12 +6,12 @@
   font-size: 20px;
 }
 
-a.pagination-a {
+a.listview-pagination-a {
   text-decoration: none;
   color: var(--light-text);
 }
 
-.announcement-bar {
+.listview-bar {
   background-color: var(--bg-color);
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -22,7 +22,7 @@ a.pagination-a {
   border-radius: var(--border-radius);
 }
 
-.announcement-list {
+.listview-list {
   margin-top: 2rem;
   margin-bottom: 2rem;
   display: block;

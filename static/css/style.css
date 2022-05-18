@@ -115,6 +115,7 @@ nav {
   margin: 0.25rem;
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
+  max-width: 100px;
   display: block;
   text-decoration: none;
   font-size: 15px;

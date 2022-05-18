@@ -3,13 +3,9 @@ vim:ft=htmldjango
 -->
 
 {% extends "base.html" %} {% block content %} {%load static %}
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'registrations/style.css' %}"
-/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/listview.css' %}" />
 
-<div class="registration-bar">
+<div class="listview-bar">
   <h1>{{contest.title | title}}</h1>
   <p>Deadline: {{contest.deadline | date:"SHORT_DATE_FORMAT"}}</p>
   <hr />
