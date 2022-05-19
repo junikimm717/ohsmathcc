@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'announcements.apps.AnnouncementsConfig',
     'home.apps.HomeConfig',
     'accounts.apps.AccountsConfig',
+    'times.apps.TimesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
