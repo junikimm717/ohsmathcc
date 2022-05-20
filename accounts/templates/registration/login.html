@@ -21,7 +21,7 @@ vim:ft=htmldjango
 <form method="post" action="{% url 'login' %}">
 	{% csrf_token %} {{form.as_p}}
 
-	<input type="submit" value="login" />
+	<button type="submit">Login</button>
 	<input type="hidden" name="next" value="{{ next }}" />
 </form>
 

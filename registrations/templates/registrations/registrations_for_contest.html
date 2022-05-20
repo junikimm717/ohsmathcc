@@ -3,53 +3,56 @@ vim:ft=htmldjango
 -->
 
 {% extends "base.html" %} {% block content %} {%load static %}
+<a class="buttonlink" href="{%url 'registrations.index' %}">
+	<i class="fa-solid fa-chevron-left"></i>
+</a>
 <h1>Registrations for {{contest.title}}</h1>
 <link rel="stylesheet" type="text/css" href="{% static 'css/listview.css' %}" />
 
 <div class="listview-list">
-  {%for registration in page_obj%}
-  <div class="listview-bar">
-    <h2>
-      {{registration.user.username}} (Name: {{registration.user.first_name}}
-      {{registration.user.last_name}}) (Email: {{registration.user.email}})
-    </h2>
-    <p>
-      <strong>Deadline: </strong>{{contest.deadline | date:"SHORT_DATE_FORMAT"}}
-    </p>
-    <p>Signed up on {{registration.timestamp}}</p>
-  </div>
-  {%endfor%}
+	{%for registration in page_obj%}
+	<div class="listview-bar">
+		<h2>
+			{{registration.user.username}} (Name: {{registration.user.first_name}}
+			{{registration.user.last_name}}) (Email: {{registration.user.email}})
+		</h2>
+		<p>
+			<strong>Deadline: </strong>{{contest.deadline | date:"SHORT_DATE_FORMAT"}}
+		</p>
+		<p>Signed up on {{registration.timestamp}}</p>
+	</div>
+	{%endfor%}
 </div>
 
 <div class="pagination">
-  <span class="listview-pagination-links">
-    {% if page_obj.has_previous %}
-    <a class="listview-pagination-a" href="?page=1">&laquo; first</a>
-    <a
-      class="listview-pagination-a"
-      href="?page={{ page_obj.previous_page_number }}"
-    >
-      previous
-    </a>
-    {% endif %}
+	<span class="listview-pagination-links">
+		{% if page_obj.has_previous %}
+		<a class="listview-pagination-a" href="?page=1">&laquo; first</a>
+		<a
+			class="listview-pagination-a"
+			href="?page={{ page_obj.previous_page_number }}"
+		>
+			previous
+		</a>
+		{% endif %}
 
-    <span>
-      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-    </span>
+		<span>
+			Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+		</span>
 
-    {% if page_obj.has_next %}
-    <a
-      class="listview-pagination-a"
-      href="?page={{ page_obj.next_page_number }}"
-      >next</a
-    >
-    <a
-      class="listview-pagination-a"
-      href="?page={{ page_obj.paginator.num_pages }}"
-      >last &raquo;</a
-    >
-    {% endif %}
-  </span>
+		{% if page_obj.has_next %}
+		<a
+			class="listview-pagination-a"
+			href="?page={{ page_obj.next_page_number }}"
+			>next</a
+		>
+		<a
+			class="listview-pagination-a"
+			href="?page={{ page_obj.paginator.num_pages }}"
+			>last &raquo;</a
+		>
+		{% endif %}
+	</span>
 </div>
 
 {% endblock %}

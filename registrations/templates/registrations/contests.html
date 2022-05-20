@@ -7,57 +7,57 @@ vim:ft=htmldjango
 <link rel="stylesheet" type="text/css" href="{% static 'css/listview.css' %}" />
 
 <div class="listview-list">
-  {%for contest in page_obj%}
-  <div class="listview-bar">
-    <h1>
-      <a href="{%url 'registrations.show' contest.id %}">
-        {{contest.title | title}}
-      </a>
-    </h1>
-    {%if user.is_staff %}
-    <span>
-      <a href="{%url 'registrations.signedup' contest.id %}">
-        People who signed up
-      </a>
-    </span>
-    {%endif%}
-    <p>
-      <strong>Deadline: </strong>{{contest.deadline | date:"SHORT_DATE_FORMAT"}}
-    </p>
-    <p>{{announcement.description | truncatechars:60}}</p>
-  </div>
-  {%endfor%}
+	{%for contest in page_obj%}
+	<div class="listview-bar">
+		<h1>
+			<a href="{%url 'registrations.show' contest.id %}">
+				{{contest.title | title}}
+			</a>
+		</h1>
+		{%if user.is_staff %}
+		<span>
+			<a href="{%url 'registrations.signedup' contest.id %}">
+				People who signed up
+			</a>
+		</span>
+		{%endif%}
+		<p>
+			<strong>Deadline: </strong>{{contest.deadline | date:"SHORT_DATE_FORMAT"}}
+		</p>
+		<p>{{announcement.description | truncatechars:60}}</p>
+	</div>
+	{%endfor%}
 </div>
 
 <div class="pagination">
-  <span class="listview-pagination-links">
-    {% if page_obj.has_previous %}
-    <a class="listview-pagination-a" href="?page=1">&laquo; first</a>
-    <a
-      class="listview-pagination-a"
-      href="?page={{ page_obj.previous_page_number }}"
-    >
-      previous
-    </a>
-    {% endif %}
+	<span class="listview-pagination-links">
+		{% if page_obj.has_previous %}
+		<a class="listview-pagination-a" href="?page=1">&laquo; first</a>
+		<a
+			class="listview-pagination-a"
+			href="?page={{ page_obj.previous_page_number }}"
+		>
+			previous
+		</a>
+		{% endif %}
 
-    <span class="current">
-      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-    </span>
+		<span class="current">
+			Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+		</span>
 
-    {% if page_obj.has_next %}
-    <a
-      class="listview-pagination-a"
-      href="?page={{ page_obj.next_page_number }}"
-      >next</a
-    >
-    <a
-      class="listview-pagination-a"
-      href="?page={{ page_obj.paginator.num_pages }}"
-      >last &raquo;</a
-    >
-    {% endif %}
-  </span>
+		{% if page_obj.has_next %}
+		<a
+			class="listview-pagination-a"
+			href="?page={{ page_obj.next_page_number }}"
+			>next</a
+		>
+		<a
+			class="listview-pagination-a"
+			href="?page={{ page_obj.paginator.num_pages }}"
+			>last &raquo;</a
+		>
+		{% endif %}
+	</span>
 </div>
 
 {% endblock %}

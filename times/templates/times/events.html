@@ -7,58 +7,58 @@ vim:ft=htmldjango
 <link rel="stylesheet" type="text/css" href="{% static 'css/listview.css' %}" />
 
 <div class="listview-list">
-  {%for event in page_obj%}
-  <div class="listview-bar">
-    <h1>
-      {% if user.is_authenticated %}
-      <a href="{%url 'times.eventform' event.id %}">
-        {{event.title | title}}
-      </a>
-      {% else %}
-      <span>{{event.title | title}}</span>
-      {% endif %}
-    </h1>
-    {% if user.is_staff %}
-    <a href="{%url 'times.view' event.id %}"> View Availability </a>
-    {% endif %} {%if event.date %}
-    <p><strong>Date: </strong>{{event.date | date:"SHORT_DATE_FORMAT"}}</p>
-    {%endif%}
+	{%for event in page_obj%}
+	<div class="listview-bar">
+		<h1>
+			{% if user.is_authenticated %}
+			<a href="{%url 'times.eventform' event.id %}">
+				{{event.title | title}}
+			</a>
+			{% else %}
+			<span>{{event.title | title}}</span>
+			{% endif %}
+		</h1>
+		{% if user.is_staff %}
+		<a href="{%url 'times.view' event.id %}"> View Availability </a>
+		{% endif %} {%if event.date %}
+		<p><strong>Date: </strong>{{event.date | date:"SHORT_DATE_FORMAT"}}</p>
+		{%endif%}
 
-    <p>{{event.description | truncatechars:100}}</p>
-  </div>
-  {%endfor%}
+		<p>{{event.description | truncatechars:100}}</p>
+	</div>
+	{%endfor%}
 </div>
 
 <div class="pagination">
-  <span class="listview-pagination-links">
-    {% if page_obj.has_previous %}
-    <a class="listview-pagination-a" href="?page=1">&laquo; first</a>
-    <a
-      class="listview-pagination-a"
-      href="?page={{ page_obj.previous_page_number }}"
-    >
-      previous
-    </a>
-    {% endif %}
+	<span class="listview-pagination-links">
+		{% if page_obj.has_previous %}
+		<a class="listview-pagination-a" href="?page=1">&laquo; first</a>
+		<a
+			class="listview-pagination-a"
+			href="?page={{ page_obj.previous_page_number }}"
+		>
+			previous
+		</a>
+		{% endif %}
 
-    <span class="current">
-      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-    </span>
+		<span class="current">
+			Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+		</span>
 
-    {% if page_obj.has_next %}
-    <a
-      class="listview-pagination-a"
-      href="?page={{ page_obj.next_page_number }}"
-    >
-      next
-    </a>
-    <a
-      class="listview-pagination-a"
-      href="?page={{ page_obj.paginator.num_pages }}"
-      >last &raquo;</a
-    >
-    {% endif %}
-  </span>
+		{% if page_obj.has_next %}
+		<a
+			class="listview-pagination-a"
+			href="?page={{ page_obj.next_page_number }}"
+		>
+			next
+		</a>
+		<a
+			class="listview-pagination-a"
+			href="?page={{ page_obj.paginator.num_pages }}"
+			>last &raquo;</a
+		>
+		{% endif %}
+	</span>
 </div>
 
 {% endblock %}

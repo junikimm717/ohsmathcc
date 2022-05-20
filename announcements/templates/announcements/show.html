@@ -3,13 +3,16 @@ vim:ft=htmldjango
 -->
 
 {% extends "base.html" %} {% block content %} {%load static %}
+<a class="buttonlink" href="{%url 'announcements.index' %}">
+	<i class="fa-solid fa-chevron-left"></i>
+</a>
 <link rel="stylesheet" type="text/css" href="{% static 'css/listview.css' %}" />
 
 <div class="listview-bar">
-  <h1>{{announcement.title | title}}</h1>
-  <p>Created At: {{announcement.timestamp | date:"SHORT_DATE_FORMAT"}}</p>
-  <hr />
-  <div>{{text}}</div>
+	<h1>{{announcement.title | title}}</h1>
+	<p>Created At: {{announcement.timestamp | date:"SHORT_DATE_FORMAT"}}</p>
+	<hr />
+	<div>{{text}}</div>
 </div>
 
 {% endblock %}
