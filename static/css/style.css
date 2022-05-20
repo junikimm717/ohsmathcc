@@ -62,38 +62,29 @@ nav {
   font-size: 20px;
   text-decoration: none;
   text-align: center;
+  display: inline-block;
 }
 
 .navbar-left,
 .navbar-right {
   background-color: var(--nav-bg);
-  padding: 0.8rem;
   border-radius: var(--border-radius);
   margin-left: 10px;
   margin-right: 10px;
-}
-
-@media (max-width: 600px) {
-  nav {
-    background-color: var(--nav-bg);
-    border-radius: var(--border-radius);
-  }
-
-  .navbar-left,
-  .navbar-right {
-    background-color: transparent;
-  }
+  display: flex;
+  justify-content: center;
 }
 
 .navuser {
   padding: 0.5rem;
+  margin: auto;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   border-radius: 10px;
   font-size: 20px;
   text-decoration: none;
-  text-align: center;
   position: relative;
+  display: block;
 }
 
 .navuser-dropdown {
@@ -107,6 +98,7 @@ nav {
   text-align: center;
   position: absolute;
   right: 0;
+  top: 50px;
   z-index: 10;
   background-color: var(--nav-bg);
 }
@@ -146,4 +138,26 @@ footer {
 
 .text-fail {
   color: red;
+}
+
+@media (max-width: 600px) {
+  nav {
+    background-color: var(--nav-bg);
+    border-radius: var(--border-radius);
+  }
+
+  .navbutton {
+    font-size: 15px;
+  }
+
+  .navuser {
+    font-size: 15px;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    background-color: transparent;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
 }

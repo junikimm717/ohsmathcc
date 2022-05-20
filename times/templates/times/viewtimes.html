@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block content %} {%load static %}
+
+<h1>Time Availability for {{event.title}}</h1>
+{%if event.date %}
+<h2>Taking place during {{event.date | date:"SHORT_DATE_FORMAT" }}</h2>
+{%endif%} {{description}}
+<hr />
+
+{% for time in times %}
+<h3>Period {{time.0.0}} - {{time.0.1.1}}</h3>
+<ul>
+  {%for avail in time.1%}
+  <li>
+    {{avail.user.username}} (Name: {{avail.user.first_name}}
+    {{avail.user.last_name}}) (Email: {{avail.user.email}})
+  </li>
+  {%endfor%}
+</ul>
+{% endfor %} {%endblock %}
