@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block content %} {%load static %}
+
+<h1>Time Availability for {{event.title}}</h1>
+{%if event.date %}
+<h2>Taking place during {{event.date | date:"SHORT_DATE_FORMAT" }}</h2>
+{%endif%} {{description}}
+<hr />
+
+<form action="{% url 'times.eventform' event.id %}" method="POST">
+  {%csrf_token%} {%if success %}
+  <p class="text-success">Submitted!</p>
+  {%endif%} {%if errors %}
+  <p class="text-fail">Invalid Form</p>
+  {%endif%} {{form.as_p}}
+  <input type="submit" value="Submit" />
+</form>
+
+{%endblock %}

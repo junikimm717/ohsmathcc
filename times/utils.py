@@ -16,3 +16,6 @@ class ScheduleTime():
         lower = self.time
         upper = self.time + datetime.timedelta(hours=1, minutes=15)
         return f"{lower.strftime('%I:%M%p' + ' ' + self.TIMEZONE)}-{upper.strftime('%I:%M%p' + ' ' + self.TIMEZONE)}"
+
+NUM_PERIODS = 13
+TIME_OPTIONS = list(zip(map(str, range(1, NUM_PERIODS+1)), iter(ScheduleTime(6, 0))))

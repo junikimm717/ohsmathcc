@@ -1,0 +1,23 @@
+<!--
+vim:ft=htmldjango
+-->
+
+{% extends "base.html" %} {% block content %} {% load static %}
+<h1>Apps</h1>
+<p>
+  Below is a list of currently implemented apps for the ohsmathc.club website.
+  These are meant to aid coordination of the club.
+</p>
+<ul>
+  <li>
+    <a class="navbutton" href="{% url 'registrations.index' %}" alt="Contests">
+      Register
+    </a>
+  </li>
+  <li>
+    <a class="navbutton" href="{% url 'times.events' %}" alt="Events">
+      Availability
+    </a>
+  </li>
+</ul>
+{% endblock %}

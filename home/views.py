@@ -5,5 +5,8 @@ from django.http import HttpResponseRedirect
 def index(request):
     return render(request, "home/index.html")
 
+def apps(request):
+    return render(request, "home/apps.html")
+
 def join_meeting(request):
     return HttpResponseRedirect("https://pcadobeconnect.stanford.edu/mathcompetitionsclub")
