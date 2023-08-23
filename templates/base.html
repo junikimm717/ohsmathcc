@@ -52,9 +52,12 @@ vim:ft=htmldjango
 				>
 					<i class="fa-solid fa-bullhorn"></i>
 				</a>
-				<a class="navbutton" href="{% url 'apps' %}" alt="Apps">
-					<strong> Apps </strong>
-				</a>
+        <a class="navbutton" href="{% url 'registrations.index' %}" alt="Contests">
+          Register
+        </a>
+        <a class="navbutton" href="{% url 'times.events' %}" alt="Events">
+          Times
+        </a>
 			</div>
 			<div class="navbar-right">
 				{%if user.is_authenticated%}
